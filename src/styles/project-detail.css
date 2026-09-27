@@ -1,0 +1,186 @@
+/* ==========================================================================
+   PROJECT / CASE STUDY DETAIL PAGE
+   ========================================================================== */
+
+.project-breadcrumb {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 2rem;
+}
+
+.project-breadcrumb a {
+  color: var(--color-cyan);
+  transition: color var(--trans-fast);
+}
+
+.project-breadcrumb a:hover {
+  color: #ffffff;
+}
+
+.project-breadcrumb span {
+  margin: 0 0.4rem;
+}
+
+.project-detail-content-wrap,
+#project-detail-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.project-hero {
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.project-hero-title {
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 1rem 0 0.85rem 0;
+}
+
+.project-hero-desc {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--text-muted);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.project-glance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.project-glance-card {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+}
+
+.project-glance-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.project-glance-value {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.project-detail-block {
+  padding: 2rem;
+}
+
+.project-block-title {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.project-block-icon {
+  font-size: 1.1rem;
+}
+
+.project-block-text {
+  font-size: 0.96rem;
+  color: var(--text-muted);
+  line-height: 1.75;
+}
+
+.project-block-problem {
+  border-left: 3px solid #ff5f56;
+}
+
+.project-block-solution {
+  border-left: 3px solid var(--color-emerald);
+}
+
+.project-architecture-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  background: #030611;
+  border: 1px solid rgba(0, 210, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+}
+
+.project-arch-step {
+  font-size: 0.85rem;
+  padding: 0.55rem 1rem;
+}
+
+.project-arch-arrow {
+  color: var(--color-cyan);
+  font-weight: 800;
+}
+
+.project-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.project-features-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  font-size: 0.94rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.project-feature-check {
+  color: var(--color-cyan);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.project-cta-banner {
+  text-align: center;
+  padding: 2.5rem;
+  background: linear-gradient(180deg, rgba(14, 23, 51, 0.9) 0%, rgba(6, 10, 24, 0.95) 100%);
+  border: 1px solid rgba(0, 210, 255, 0.28);
+  border-radius: var(--radius-lg);
+  margin-top: 0.5rem;
+}
+
+.project-cta-banner h3 {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.project-cta-banner p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 640px) {
+  .project-detail-block {
+    padding: 1.5rem;
+  }
+
+  .project-cta-banner {
+    padding: 2rem 1.5rem;
+  }
+}

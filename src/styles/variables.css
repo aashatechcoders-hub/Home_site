@@ -1,0 +1,63 @@
+/* ==========================================================================
+   ATC — AASHA TECH CODERS: DESIGN SYSTEM TOKENS
+   "CODE TODAY • A BRIGHTER TOMORROW"
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Core */
+  --color-midnight: #020408;
+  --color-navy-dark: #050814;
+  --color-navy: #0a1024;
+  --color-navy-surface: #0e1733;
+  --color-navy-card: rgba(14, 23, 51, 0.72);
+  --color-navy-border: rgba(0, 210, 255, 0.16);
+
+  /* Brand Accents */
+  --color-electric-blue: #0062ff;
+  --color-cyan: #00d2ff;
+  --color-cyan-glow: rgba(0, 210, 255, 0.4);
+  --color-emerald: #00e676;
+  --color-emerald-glow: rgba(0, 230, 118, 0.35);
+  --color-gold: #ffc837;
+  --color-gold-deep: #f5a623;
+  --color-gold-glow: rgba(255, 200, 55, 0.3);
+
+  /* Gradients */
+  --grad-atc: linear-gradient(135deg, #00d2ff 0%, #0062ff 50%, #00e676 100%);
+  --grad-atc-glow: linear-gradient(135deg, rgba(0, 210, 255, 0.15) 0%, rgba(0, 98, 255, 0.12) 50%, rgba(0, 230, 118, 0.15) 100%);
+  --grad-gold: linear-gradient(135deg, #ffc837 0%, #f5a623 100%);
+  --grad-card: linear-gradient(180deg, rgba(20, 32, 68, 0.6) 0%, rgba(10, 16, 36, 0.8) 100%);
+  --grad-hero-overlay: radial-gradient(circle at 50% 30%, rgba(0, 98, 255, 0.12) 0%, rgba(2, 4, 8, 0.85) 70%, #020408 100%);
+
+  /* Text Colors */
+  --text-primary: #ffffff;
+  --text-secondary: #e2e8f0;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+
+  /* Typography */
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Layout & Spacing */
+  --container-max: 1320px;
+  --container-pad: clamp(1rem, 4vw, 2.5rem);
+  --section-pad-y: clamp(4.5rem, 8vw, 8rem);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows & Glows */
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-card: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 0 0 1px var(--color-navy-border);
+  --shadow-card-hover: 0 20px 40px -15px rgba(0, 98, 255, 0.25), 0 0 30px rgba(0, 210, 255, 0.18), 0 0 0 1px rgba(0, 210, 255, 0.35);
+  --glow-cyan: 0 0 25px rgba(0, 210, 255, 0.45);
+  --glow-emerald: 0 0 25px rgba(0, 230, 118, 0.45);
+  --glow-gold: 0 0 25px rgba(255, 200, 55, 0.4);
+
+  /* Transitions */
+  --trans-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-normal: 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  --trans-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}

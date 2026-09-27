@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d2ff"/>
+      <stop offset="50%" stop-color="#0062ff"/>
+      <stop offset="100%" stop-color="#00e676"/>
+    </linearGradient>
+    <filter id="blur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#060913"/>
+  <circle cx="32" cy="32" r="26" stroke="url(#glow)" stroke-width="2" fill="none" opacity="0.6"/>
+  <ellipse cx="32" cy="32" rx="28" ry="11" stroke="#00d2ff" stroke-width="1.2" fill="none" transform="rotate(-25 32 32)" opacity="0.8"/>
+  <!-- Gold swoop -->
+  <path d="M 16 38 C 22 28, 30 22, 42 22" stroke="#ffc837" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- ATC text -->
+  <text x="32" y="38" font-family="'JetBrains Mono', monospace" font-weight="900" font-size="16" fill="#ffffff" text-anchor="middle" letter-spacing="1">ATC</text>
+  <circle cx="48" cy="20" r="2.5" fill="#00e676"/>
+</svg>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study — ATC | AASHA TECH CODERS</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="In-depth engineering case study from ATC (Aasha Tech Coders) — problem, solution architecture, features and technology stack." />
+  <meta name="author" content="ATC — Aasha Tech Coders" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://aashatechcoders.com/project.html" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/variables.css" />
+  <link rel="stylesheet" href="/src/styles/reset.css" />
+  <link rel="stylesheet" href="/src/styles/main.css" />
+  <link rel="stylesheet" href="/src/styles/hero.css" />
+  <link rel="stylesheet" href="/src/styles/components.css" />
+  <link rel="stylesheet" href="/src/styles/animations.css" />
+  <link rel="stylesheet" href="/src/styles/project-detail.css" />
+  <link rel="stylesheet" href="/src/styles/fx.css" />
+</head>
+<body>
+
+  <!-- Cinematic Preloader -->
+  <div class="atc-preloader" id="atc-preloader" aria-hidden="true">
+    <img src="/logo-atc.jpeg" alt="" class="atc-preloader-logo" />
+    <div class="atc-preloader-bar"></div>
+    <div class="atc-preloader-text">Code Today • A Brighter Tomorrow</div>
+  </div>
+
+  <!-- Scroll Progress Indicator -->
+  <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <!-- Ambient Cosmic Lighting Orbs -->
+  <div class="bg-ambient" aria-hidden="true">
+    <div class="bg-ambient-orb-1"></div>
+    <div class="bg-ambient-orb-2"></div>
+    <div class="bg-ambient-orb-3"></div>
+  </div>
+
+  <!-- Sticky Premium Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="container nav-container">
+      <a href="index.html#hero" class="brand-logo" aria-label="ATC Home">
+        <img src="/logo-atc.jpeg" alt="ATC Logo" class="brand-logo-img" />
+        <div class="brand-logo-text">
+          <span class="brand-logo-title">ATC</span>
+          <span class="brand-logo-sub">AASHA TECH CODERS</span>
+        </div>
+      </a>
+
+      <nav class="nav-links" id="main-nav-links">
+        <a href="index.html#services" class="nav-link">Services</a>
+        <a href="index.html#ai-agents" class="nav-link">AI Solutions</a>
+        <a href="index.html#projects" class="nav-link">Projects</a>
+        <a href="index.html#team" class="nav-link">Team</a>
+
+        <div class="nav-dropdown">
+          <button class="nav-link nav-dropdown-toggle" aria-label="Explore more sections">
+            <span>Explore</span>
+            <span style="font-size: 0.72rem; color: var(--color-cyan);">▾</span>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="index.html#about" class="nav-dropdown-item">🏢 About ATC</a>
+            <a href="index.html#pillars" class="nav-dropdown-item">⚡ 4 Core Pillars</a>
+            <a href="index.html#technologies" class="nav-dropdown-item">🌐 Tech Universe</a>
+            <a href="index.html#cloud" class="nav-dropdown-item">☁️ Cloud & DevOps</a>
+            <a href="index.html#demos" class="nav-dropdown-item">💻 Live Tech Demos</a>
+            <a href="index.html#process" class="nav-dropdown-item">🔄 6-Stage Process</a>
+            <a href="index.html#pricing" class="nav-dropdown-item">💰 Engagement & Pricing</a>
+            <a href="index.html#vision" class="nav-dropdown-item">🎯 Vision & Partners</a>
+            <a href="index.html#faq" class="nav-dropdown-item">❓ FAQ</a>
+            <a href="index.html#contact" class="nav-dropdown-item">✉️ Contact ATC</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="index.html#contact" class="btn btn-primary" style="padding: 0.65rem 1.4rem; font-size: 0.85rem;">Start a Project</a>
+        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Toggle mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       CASE STUDY DETAIL (rendered by project-detail.js based on ?id=)
+       ========================================================================== -->
+  <main class="section project-detail-page" id="project-detail-root" style="padding-top: 8rem;">
+    <div class="container">
+      <div class="project-breadcrumb" id="project-breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <a href="index.html#projects">Case Studies</a> <span>/</span> <span id="breadcrumb-current">Loading…</span>
+      </div>
+
+      <div id="project-detail-content">
+        <!-- Injected dynamically by project-detail.js -->
+      </div>
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       RELATED CASE STUDIES
+       ========================================================================== -->
+  <section class="section" id="related-projects-section" style="background: rgba(4, 7, 18, 0.5);">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag">Keep Exploring</div>
+        <h2 class="section-title">RELATED <span class="gradient-text">CASE STUDIES.</span></h2>
+      </div>
+      <div class="projects-grid" id="related-projects-grid">
+        <!-- Injected dynamically by project-detail.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <img src="/logo-atc.jpeg" alt="ATC" style="width: 36px; height: 36px; border-radius: 50%;" />
+            <span style="font-weight: 900; font-size: 1.2rem; color: #fff;">ATC</span>
+          </div>
+          <p>
+            ATC — AASHA TECH CODERS<br />
+            <strong style="color: var(--color-cyan);">“CODE TODAY • A BRIGHTER TOMORROW”</strong><br />
+            Technology company and digital innovation partner for modern organizations.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Navigation</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#about">About ATC</a></li>
+            <li><a href="index.html#pillars">4 Core Pillars</a></li>
+            <li><a href="index.html#services">Services (16)</a></li>
+            <li><a href="index.html#ai-agents">AI Agents</a></li>
+            <li><a href="index.html#pricing">Engagement & Pricing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Company &amp; Legal</h5>
+          <ul class="footer-links">
+            <li><a href="index.html#team">The Team</a></li>
+            <li><a href="index.html#vision">Vision</a></li>
+            <li><a href="privacy.html" style="color: var(--color-cyan);">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="privacy.html#security">Security &amp; Compliance</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Direct Contact</h5>
+          <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.7;">
+            Phone: <a href="tel:+918978941066" style="color: var(--color-cyan);">+91 8978941066</a> (Call / WhatsApp)<br />
+            Email: <a href="mailto:aashatechcoders@gmail.com" style="color: var(--color-cyan);">aashatechcoders@gmail.com</a>
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 ATC — AASHA TECH CODERS. All rights reserved. • <a href="privacy.html" style="color: var(--color-cyan); margin: 0 0.35rem;">Privacy Policy</a> • <a href="terms.html" style="color: var(--color-cyan); margin: 0 0.35rem;">Terms of Service</a></div>
+        <div style="font-family: var(--font-mono); color: var(--color-cyan); letter-spacing: 0.08em;">
+          PEOPLE • TECHNOLOGY • IDEAS • GROWTH • A BETTER TOMORROW
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">↑</button>
+
+  <!-- Page Entry Point -->
+  <script type="module" src="/src/js/project-main.js"></script>
+</body>
+</html>
