@@ -17,26 +17,42 @@ import {
   initCardTilt,
 } from './interactive-fx.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize all interactive components
-  initGlobe();
-  initNavigation();
-  initPillarsAndServices();
-  initAiAgentDemo();
-  initAiCreativeStudio();
-  initTechDemos();
-  initProjects();
-  initTechUniverse();
-  initTeamNetwork();
-  initContact();
-
-  // Motion & flow layer
+function runATC() {
+  // Motion & flow layer first, so preloader dismisses without blocking
+  initPreloader(initHeroEntrance);
   initScrollProgress();
   initScrollReveal();
   initStatCounters();
   initCursorSpotlight();
   initCardTilt();
-  initPreloader(initHeroEntrance);
+
+  // Initialize interactive components safely
+  const inits = [
+    ['Globe', initGlobe],
+    ['Navigation', initNavigation],
+    ['Pillars', initPillarsAndServices],
+    ['AiAgentDemo', initAiAgentDemo],
+    ['AiCreative', initAiCreativeStudio],
+    ['TechDemos', initTechDemos],
+    ['Projects', initProjects],
+    ['TechUniverse', initTechUniverse],
+    ['TeamNetwork', initTeamNetwork],
+    ['Contact', initContact],
+  ];
+
+  for (const [name, fn] of inits) {
+    try {
+      fn();
+    } catch (err) {
+      console.warn(`[ATC] Warning initializing ${name}:`, err);
+    }
+  }
 
   console.log('⚡ ATC — AASHA TECH CODERS initialized. "CODE TODAY • A BRIGHTER TOMORROW"');
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', runATC);
+} else {
+  runATC();
+}

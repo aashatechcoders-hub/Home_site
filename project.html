@@ -37,6 +37,17 @@
     <div class="atc-preloader-bar"></div>
     <div class="atc-preloader-text">Code Today • A Brighter Tomorrow</div>
   </div>
+  <script>
+    (function(){
+      setTimeout(function(){
+        var p = document.getElementById('atc-preloader');
+        if (p) {
+          p.classList.add('is-hidden');
+          setTimeout(function(){ if (p && p.parentNode) p.parentNode.removeChild(p); }, 700);
+        }
+      }, 2500);
+    })();
+  </script>
 
   <!-- Scroll Progress Indicator -->
   <div class="scroll-progress-bar" id="scroll-progress-bar" aria-hidden="true"></div>

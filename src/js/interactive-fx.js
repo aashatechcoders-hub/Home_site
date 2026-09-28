@@ -22,23 +22,29 @@ export function initPreloader(onHide) {
     hidden = true;
     pre.classList.add('is-hidden');
     onHide && onHide();
-    setTimeout(() => pre.remove(), 700);
+    setTimeout(() => {
+      if (pre && pre.parentNode) pre.parentNode.removeChild(pre);
+    }, 700);
   }
 
-  const minVisibleMs = 650;
+  const minVisibleMs = 600;
   const startedAt = performance.now();
 
-  window.addEventListener(
-    'load',
-    () => {
-      const elapsed = performance.now() - startedAt;
-      setTimeout(hide, Math.max(0, minVisibleMs - elapsed));
-    },
-    { once: true }
-  );
+  if (document.readyState === 'complete') {
+    setTimeout(hide, minVisibleMs);
+  } else {
+    window.addEventListener(
+      'load',
+      () => {
+        const elapsed = performance.now() - startedAt;
+        setTimeout(hide, Math.max(0, minVisibleMs - elapsed));
+      },
+      { once: true }
+    );
+  }
 
-  // Safety net in case 'load' is delayed by slow third-party assets.
-  setTimeout(hide, 3200);
+  // Safety net in case 'load' is delayed by slow third-party assets or network
+  setTimeout(hide, 2500);
 }
 
 export function initHeroEntrance() {
