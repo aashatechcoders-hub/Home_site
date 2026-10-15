@@ -1,0 +1,56 @@
+[
+  {
+    "id": "konda-vinay",
+    "name": "Konda Vinay",
+    "role": "Product Manager",
+    "tagline": "Turning ideas into clear product direction and meaningful experiences.",
+    "image": "/images/team/konda-vinay.webp",
+    "initials": "KV",
+    "category": "product"
+  },
+  {
+    "id": "ganagani-ganesh",
+    "name": "Ganagani Ganesh",
+    "role": "Backend & DevOps Engineer",
+    "tagline": "Building reliable systems that bring ambitious ideas to life.",
+    "image": "/images/team/ganagani-ganesh.webp",
+    "initials": "GG",
+    "category": "engineering"
+  },
+  {
+    "id": "praveen-sanda",
+    "name": "Praveen Sanda",
+    "role": "Backend Developer",
+    "tagline": "Creating powerful backend solutions with simplicity and precision.",
+    "image": "/images/team/praveen-sanda.webp",
+    "initials": "PS",
+    "category": "engineering"
+  },
+  {
+    "id": "jillala-vinay",
+    "name": "Jillala Vinay",
+    "role": "Frontend Developer",
+    "tagline": "Crafting intuitive digital experiences, one interface at a time.",
+    "image": "/images/team/jillala-vinay.webp",
+    "initials": "JV",
+    "category": "engineering"
+  },
+  {
+    "id": "srinivas-nelapatla",
+    "name": "Srinivas Nelapatla",
+    "role": "UI/UX Designer",
+    "tagline": "Designing meaningful experiences around the people who use them.",
+    "image": "/images/team/srinivas-nelapatla.webp",
+    "initials": "SN",
+    "category": "design-growth"
+  },
+  {
+    "id": "akhil-daramalla",
+    "name": "Akhil Daramalla",
+    "role": "Marketing & Growth Coordinator",
+    "tagline": "Connecting great ideas with the people who need them.",
+    "image": "/images/team/akhil-daramalla.webp",
+    "initials": "AD",
+    "category": "design-growth"
+  }
+]
