@@ -1,58 +1,11 @@
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
-import { readFileSync } from 'fs';
-import { existsSync } from 'fs';
-
-const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
-  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;',
-})[character]);
-
-function teamPortrait(member) {
-  const file = resolve(__dirname, 'public', member.image.replace(/^\//, ''));
-  const hasPhoto = existsSync(file);
-  const photo = hasPhoto
-    ? `<img src="${escapeHtml(member.image)}" alt="Portrait of ${escapeHtml(member.name)}" width="180" height="180" loading="lazy" decoding="async" />`
-    : `<span class="team-portrait__initials" aria-hidden="true">${escapeHtml(member.initials)}</span>`;
-  return `<div class="team-portrait"${hasPhoto ? '' : ` role="img" aria-label="Initials placeholder for ${escapeHtml(member.name)}"`}>${photo}</div>`;
-}
-
-function teamProfile(member) {
-  const id = `team-${escapeHtml(member.id)}`;
-  const featured = member.category === 'product';
-  return `<article class="team-profile${featured ? ' team-profile--featured' : ''}" aria-labelledby="${id}" tabindex="0" data-reveal>
-    ${featured ? '<span class="team-profile__badge">Product</span>' : ''}
-    ${teamPortrait(member)}
-    <h4 id="${id}" class="team-profile__name">${escapeHtml(member.name)}</h4>
-    <p class="team-profile__role">${escapeHtml(member.role)}</p>
-    <p class="team-profile__tagline">${escapeHtml(member.tagline)}</p>
-  </article>`;
-}
-
-function renderTeam() {
-  const members = JSON.parse(readFileSync(resolve(__dirname, 'src/js/data/team.json'), 'utf8'));
-  const count = (category) => members.filter((member) => member.category === category).length;
-  if (members.length !== 6 || count('product') !== 1 || count('engineering') !== 3 || count('design-growth') !== 2) {
-    throw new Error('Team configuration must contain one product, three engineering, and two design/growth profiles.');
-  }
-  return `<section class="team" aria-labelledby="team-title">
-    <header class="team__head" data-reveal>
-      <p class="team__eyebrow">The people behind ATC</p>
-      <h3 id="team-title" class="team__title">Meet the Minds Behind ATC</h3>
-      <p class="team__intro">A team combining product thinking, engineering, design, and growth to turn ideas into meaningful digital experiences.</p>
-    </header>
-    <div class="team__list">
-      ${members.map((member) => teamProfile(member)).join('')}
-    </div>
-    <aside class="team-open" aria-labelledby="team-open-title" tabindex="0" data-reveal>
-      <span class="team-open__mark" aria-hidden="true">+</span>
-      <div class="team-open__copy">
-        <p class="team-open__eyebrow">We're hiring</p>
-        <h4 id="team-open-title">Open Position</h4>
-        <p class="team-open__role">QA Engineer / Software Tester</p>
-      </div>
-    </aside>
-  </section>`;
-}
+import { readFileSync, writeFileSync, mkdirSync } from 'fs';
+import { PROJECTS } from './src/js/data/projects.js';
+import { TECH_DOMAINS } from './src/js/data/tech.js';
+import {
+  SITE, esc, projectPath, projectTitle, projectDescription, projectJsonLd, projectBodyHTML,
+} from './src/js/project-render.js';
 
 // Replaces <!-- @include name --> with src/partials/name.html so every page
 // shares one header/footer without shipping them as client-side JS.
@@ -64,14 +17,115 @@ function htmlPartials() {
       handler(html) {
         return html.replace(/<!--\s*@include\s+([\w-]+)\s*-->/g, (_, name) =>
           readFileSync(resolve(__dirname, 'src/partials', `${name}.html`), 'utf8')
-        ).replace('<!-- @team -->', () => renderTeam());
+        );
       },
     },
   };
 }
 
+const setAttr = (html, selector, attr, value) =>
+  html.replace(new RegExp(`(<${selector}[^>]*\\s${attr}=")[^"]*(")`), `$1${esc(value)}$2`);
+
+// Builds crawlable output that search engines and AI assistants can read
+// without running JavaScript:
+//  - /projects/<id>/index.html — a static, fully rendered page per blueprint
+//  - sitemap.xml — regenerated each build so lastmod is always current
+//  - llms-full.txt — public/llms.txt plus every blueprint and technology
+function seoPages() {
+  let outDir;
+  return {
+    name: 'atc-seo-pages',
+    configResolved(config) {
+      outDir = resolve(config.root, config.build.outDir);
+    },
+    // Dev only: serve /projects/<id>/ from project.html, which renders client-side.
+    configureServer(server) {
+      server.middlewares.use((req, _res, next) => {
+        if (/^\/projects\/[\w-]+\/?(\?.*)?$/.test(req.url)) req.url = '/project.html';
+        next();
+      });
+    },
+    closeBundle() {
+      if (!outDir) return;
+      const template = readFileSync(resolve(outDir, 'project.html'), 'utf8');
+
+      for (const p of PROJECTS) {
+        const url = SITE + projectPath(p.id);
+        const title = projectTitle(p);
+        const description = projectDescription(p);
+        let html = template.replace(/<title>[^<]*<\/title>/, `<title>${esc(title)}</title>`);
+        html = setAttr(html, 'meta name="robots"', 'content', 'index, follow, max-image-preview:large, max-snippet:-1');
+        html = setAttr(html, 'meta name="description"', 'content', description);
+        html = setAttr(html, 'link rel="canonical"', 'href', url);
+        html = setAttr(html, 'meta property="og:url"', 'content', url);
+        html = setAttr(html, 'meta property="og:title"', 'content', title);
+        html = setAttr(html, 'meta property="og:description"', 'content', description);
+        html = setAttr(html, 'meta name="twitter:title"', 'content', title);
+        html = setAttr(html, 'meta name="twitter:description"', 'content', description);
+        const ld = JSON.stringify(projectJsonLd(p)).replace(/</g, '\\u003c');
+        html = html.replace('</head>', `  <script type="application/ld+json">${ld}</script>\n</head>`);
+        html = html.replace(
+          /<main id="main" data-project-root>[\s\S]*?<\/main>/,
+          `<main id="main" data-project-root data-prerendered style="--accent: ${esc(p.accent)}">${projectBodyHTML(p)}\n  </main>`
+        );
+        const dir = resolve(outDir, 'projects', p.id);
+        mkdirSync(dir, { recursive: true });
+        writeFileSync(resolve(dir, 'index.html'), html);
+      }
+
+      const today = new Date().toISOString().slice(0, 10);
+      const urls = ['/', ...PROJECTS.map((p) => projectPath(p.id)), '/privacy.html', '/terms.html'];
+      writeFileSync(
+        resolve(outDir, 'sitemap.xml'),
+        `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
+          .map((u) => `  <url>\n    <loc>${SITE}${u}</loc>\n    <lastmod>${today}</lastmod>\n  </url>`)
+          .join('\n')}\n</urlset>\n`
+      );
+
+      const llms = readFileSync(resolve(__dirname, 'public/llms.txt'), 'utf8').trimEnd();
+      const blueprints = PROJECTS.map((p) => [
+        `### ${p.title}`,
+        '',
+        `URL: ${SITE}${projectPath(p.id)}`,
+        `Category: ${p.category} · Industry: ${p.industry}`,
+        '',
+        p.summary,
+        '',
+        `Problem: ${p.problem}`,
+        '',
+        `Solution: ${p.solution}`,
+        '',
+        'Requirements:',
+        ...(p.requirements || []).map((r) => `- ${r}`),
+        '',
+        'Key capabilities:',
+        ...p.features.map((f) => `- ${f}`),
+        '',
+        `Architecture: ${p.architecture.join(' → ')}`,
+        `Technologies: ${p.technologies.join(', ')}`,
+        '',
+        `UX: ${p.ux}`,
+        `Development: ${p.development}`,
+        `Testing: ${p.testing}`,
+        `Deployment: ${p.deployment}`,
+      ].join('\n'));
+      const tech = TECH_DOMAINS.map((d) => [
+        `### ${d.title}`,
+        '',
+        d.desc,
+        '',
+        ...d.items.map(([name, desc]) => `- ${name}: ${desc}`),
+      ].join('\n'));
+      writeFileSync(
+        resolve(outDir, 'llms-full.txt'),
+        `${llms}\n\n## Solution blueprints in full\n\nRepresentative architectures showing how ATC approaches each class of problem.\n\n${blueprints.join('\n\n')}\n\n## Technology ATC works with\n\n${tech.join('\n\n')}\n`
+      );
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [htmlPartials()],
+  plugins: [htmlPartials(), seoPages()],
   server: {
     port: 5173,
     host: true,
@@ -89,6 +143,7 @@ export default defineConfig({
         project: resolve(__dirname, 'project.html'),
         privacy: resolve(__dirname, 'privacy.html'),
         terms: resolve(__dirname, 'terms.html'),
+        notFound: resolve(__dirname, '404.html'),
       },
     },
   },
