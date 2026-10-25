@@ -1,0 +1,48 @@
+# ATC Aasha Tech Coders
+
+> ATC (Aasha Tech Coders) is a software engineering company based in Hyderabad, Telangana, India, serving clients worldwide. One team designs, builds and runs complete digital systems for businesses: websites, web applications and SaaS platforms, Android and iOS mobile apps, backend APIs, AI assistants and LLM integrations, business automation, and cloud and DevOps — from discovery and architecture through deployment, monitoring and scale.
+
+Key facts:
+
+- Legal/brand name: ATC Aasha Tech Coders (short name: ATC). "Aasha" means hope. Motto: "Code today, a brighter tomorrow."
+- Location: Hyderabad, Telangana, India. Works with clients worldwide, remotely.
+- Languages: English, Hindi, Telugu.
+- Who it works with: startup founders, growing businesses and larger organisations that need products, platforms and systems — not just a website.
+- Ownership: clients own 100% of the source code, IP and infrastructure; everything is delivered under the client's own accounts.
+- Support: fixed-scope projects include a 30-day post-launch bug-fix window; ongoing month-to-month partnership is available with no long-term lock-in.
+- No account managers between clients and engineers.
+- Getting started: a free 30-minute discovery call, then a written scope and a fixed, milestone-based quote. NDAs signed on request.
+- Engagement models: Project sprint (fixed scope and milestones, full handover); Growth partner (monthly engineering and support, pause or scale any month); Enterprise & consulting (dedicated teams, architecture advisory, custom SLAs).
+- Contact: aashatechcoders@gmail.com · +91 89789 41066 · WhatsApp https://wa.me/918978941066 · https://aashatechcoders.in/#contact
+
+## Services
+
+- [Web development](https://aashatechcoders.in/#services): websites, SaaS platforms, dashboards, customer and partner portals (React, Next.js, TypeScript).
+- [Mobile app development](https://aashatechcoders.in/#services): Android, iOS and cross-platform apps with Flutter — offline sync, push notifications, maps, payments.
+- [Backend engineering](https://aashatechcoders.in/#services): APIs, authentication, databases, queues and business logic (Python, Django, FastAPI, Node.js, PostgreSQL, Redis).
+- [AI development](https://aashatechcoders.in/#services): AI assistants and agents, LLM integrations, retrieval-augmented generation (RAG) over company data, intelligent workflows.
+- [Business automation](https://aashatechcoders.in/#services): workflow automation and integrations between CRMs, payments, email and internal systems.
+- [Cloud & DevOps](https://aashatechcoders.in/#services): AWS, Docker, CI/CD with GitHub Actions, Linux, blue-green deployments, monitoring.
+- [UI/UX design](https://aashatechcoders.in/#services): product interfaces, design systems and interaction design.
+- [Custom software](https://aashatechcoders.in/#services): business-specific systems such as CRMs, admin panels, analytics platforms and API platforms.
+
+## Solution blueprints
+
+- [AI Support & Operations Agent](https://aashatechcoders.in/projects/ai-ops-agent/): multi-step AI agent that answers tier-1 support questions, routes tickets and triggers backend workflows, with human escalation.
+- [Headless Commerce Platform](https://aashatechcoders.in/projects/headless-ecommerce/): edge-rendered Next.js storefront with Redis caching and a resilient checkout for sale-day traffic.
+- [Multi-Tenant SaaS & Billing Platform](https://aashatechcoders.in/projects/b2b-saas-portal/): isolated tenant workspaces, role-based access control and Stripe usage-based billing.
+- [Offline-First Fleet & Logistics App](https://aashatechcoders.in/projects/fleet-mobile-app/): Flutter driver app with live tracking, routing and proof-of-delivery that works without signal.
+- [Zero-Downtime Cloud & CI/CD Modernisation](https://aashatechcoders.in/projects/cloud-devops-migration/): Dockerised AWS infrastructure with automated test gates and blue-green deployments.
+
+## Company
+
+- [About ATC](https://aashatechcoders.in/#about)
+- [How ATC builds software, from idea to production](https://aashatechcoders.in/#journey)
+- [Frequently asked questions](https://aashatechcoders.in/#faq)
+- [Start a project](https://aashatechcoders.in/#contact)
+
+## Optional
+
+- [Full details for AI assistants](https://aashatechcoders.in/llms-full.txt)
+- [Privacy policy](https://aashatechcoders.in/privacy.html)
+- [Terms of service](https://aashatechcoders.in/terms.html)
